@@ -30,6 +30,8 @@
 
 系统采用四层递进式架构，各层级职责独立、逐级依赖、层层联动，形成「数据输入 → 推理生成 → 过程评估 → 结果输出」的全自动评测流水线。以下为系统分层架构图：
 
+![系统四层架构图](docs/arch.png)
+
 ```mermaid
 graph TD
     subgraph 四层系统架构
@@ -56,115 +58,7 @@ graph TD
     class D4 outputLayer
 ```
 
-基于四层架构，项目完整技术流转流程如下，同时兼顾代码运行结果真实性与解题推理过程严谨性：
 
-```mermaid
-flowchart TB
-    %% 样式定义
-    classDef input fill:#e6f7ff,stroke:#1890ff,stroke-width:1.5px
-    classDef generate fill:#f6ffed,stroke:#52c41a,stroke-width:1.5px
-    classDef evaluate fill:#fff7e6,stroke:#faad14,stroke-width:1.5px
-    classDef output fill:#fef0f0,stroke:#f5222d,stroke-width:1.5px
-    classDef check fill:#f0f2f5,stroke:#8c8c8c,stroke-width:1.5px
-
-    %% 流程节点
-    A["分层题库数据集洛谷/Codeforces 四级难度"]:::input
-    B["Hy3 Agent 分步推理完整解题链路输出"]:::generate
-    C["沙盒代码执行获取客观运行结果"]:::check
-    D["多Agent交叉复核评估步骤校验｜错误定位｜类型归类"]:::evaluate
-    E["伪正确样本专项检测逻辑缺陷+结果正确识别"]:::evaluate
-    F["自动化指标统计准确率｜误报率｜分层性能"]:::output
-    G["输出评测报告与开源成果"]:::output
-
-    %% 流转关系
-    A --> B
-    B --> C
-    B --> D
-    C --> D
-    D --> E
-    E --> F
-    F --> G
-```
-
-各层级详细功能说明如下：
-
-```mermaid
-flowchart TB
-    %% 定义全局样式
-    classDef input fill:#e6f7ff,stroke:#1890ff,stroke-width:1.5px
-    classDef generate fill:#f6ffed,stroke:#52c41a,stroke-width:1.5px
-    classDef evaluate fill:#fff7e6,stroke:#faad14,stroke-width:1.5px
-    classDef output fill:#fef0f0,stroke:#f5222d,stroke-width:1.5px
-    classDef check fill:#f0f2f5,stroke:#8c8c8c,stroke-width:1.5px
-
-    %% 流程节点
-    A["分层题库数据集洛谷/Codeforces 四级难度"]:::input
-    B["Hy3 Agent 分步推理题意解析→思路→复杂度→边界→代码"]:::generate
-    C["沙盒代码执行获取客观运行结果"]:::check
-    D["多Agent交叉复核评估步骤校验｜错误定位｜类型归类"]:::evaluate
-    E["伪正确样本专项检测逻辑缺陷+结果正确识别"]:::evaluate
-    F["自动化指标统计准确率｜误报率｜分层性能"]:::output
-    G["输出评测报告与开源成果"]:::output
-
-    %% 流转关系
-    A -- 题目数据输入 --> B
-    B -- 生成完整解题过程+代码 --> C
-    B -- 生成推理链路 --> D
-    C -- 结果真值 --> D
-    D -- 逻辑校验结果 --> E
-    E -- 全维度评测结果 --> F
-    F -- 数据汇总分析 --> G
-```
-
-
-
-```mermaid
-
-graph TD
-    subgraph 四层系统架构
-        D1["📁 题库输入层分层竞赛数据集入门/普及/提高/困难"]
-        
-        D2["🤖 Hy3解题Agent层固定五步推理链路题意→思路→复杂度→边界→代码"]
-        
-        D3["✅ 过程评估核心模块多Agent交叉复核错误定位·分类·伪正确样本检测"]
-        
-        D4["📊 结果统计输出层指标统计·数据分析·结果留存"]
-    end
-
-    %% 数据流流向
-    D1 -- 标准化题目数据 --> D2
-    D2 -- 完整分步推理过程 --> D3
-    D3 -- 过程校验&错误分析结果 --> D4
-
-    %% 样式定义
-    classDef dataLayer fill:#e6f7ff,stroke:#1890ff,stroke-width:2px
-    classDef agentLayer fill:#f6ffed,stroke:#52c41a,stroke-width:2px
-    classDef coreLayer fill:#fff7e6,stroke:#faad14,stroke-width:2px
-    classDef outputLayer fill:#fef0f0,stroke:#f5222d,stroke-width:2px
-
-    class D1 dataLayer
-    class D2 agentLayer
-    class D3 coreLayer
-    class D4 outputLayer
-```
-
-```mermaid
-graph TD
-    A["题库输入层(数据基础)"] -- 分层真题数据集 --> B["Hy3 解题Agent层(推理生成)"]
-    B["Hy3 解题Agent层(推理生成)"] -- 完整分步推理链路 --> C["过程评估核心模块(多Agent交叉复核)"]
-    C["过程评估核心模块(多Agent交叉复核)"] -- 错误定位/分类/伪样本检测 --> D["结果统计输出层(量化输出与留存)"]
-
-    %% 层级功能标注
-    A:::layer
-    B:::layer
-    C:::layer
-    D:::layer
-
-    %% 样式定义
-    classDef layer fill:#f0f8ff,stroke:#4169e1,stroke-width:2px
-    classDef core fill:#f0fff0,stroke:#32cd32,stroke-width:2px
-    class C core
-```
 
 各层级详细功能说明如下：
 
