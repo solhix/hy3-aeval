@@ -32,34 +32,6 @@
 
 ![系统四层架构图](docs/arch.png)
 
-```mermaid
-graph TD
-    subgraph 四层系统架构
-        D1["📁 题库输入层分层竞赛数据集入门/普及/提高/困难"]
-        D2["🤖 Hy3解题Agent层固定五步推理链路题意→思路→复杂度→边界→代码"]
-        D3["✅ 过程评估核心模块多Agent交叉复核错误定位·分类·伪正确样本检测"]
-        D4["📊 结果统计输出层指标统计·数据分析·结果留存"]
-    end
-
-    %% 数据流流向
-    D1 -- 标准化题目数据 --> D2
-    D2 -- 完整分步推理过程 --> D3
-    D3 -- 过程校验&错误分析结果 --> D4
-
-    %% 样式定义
-    classDef dataLayer fill:#e6f7ff,stroke:#1890ff,stroke-width:2px
-    classDef agentLayer fill:#f6ffed,stroke:#52c41a,stroke-width:2px
-    classDef coreLayer fill:#fff7e6,stroke:#faad14,stroke-width:2px
-    classDef outputLayer fill:#fef0f0,stroke-width:2px
-
-    class D1 dataLayer
-    class D2 agentLayer
-    class D3 coreLayer
-    class D4 outputLayer
-```
-
-
-
 各层级详细功能说明如下：
 
 ### 2\.1 题库输入层（数据基础）
@@ -180,4 +152,4 @@ graph TD
 
 - **交付成果标准化**：配套完整源码、文档、分析报告、演示素材，完全符合GitHub开源项目交付规范。
 
-> （注：部分内容可能由 AI 生成）
+
