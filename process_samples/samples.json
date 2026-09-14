@@ -1,0 +1,182 @@
+[
+  {
+    "id": "number-good-01",
+    "problem_id": "number",
+    "difficulty": "Easy",
+    "category": "good",
+    "judge0_verdict": "AC",
+    "process_text": "## 1. 题意理解\n从字符串 s（含数字与非数字字符）中选出数字字符，拼成一个最大的正整数；每个数字字符最多用一次，s 可能含非数字。\n## 2. 算法思路\n经典贪心：自定义比较 a+b 与 b+a，按「拼接后更大」的规则降序排序再拼接。直接按数值或字典序排序会在 9 与 90 这类情况出错。\n## 3. 复杂度分析\n- 时间复杂度：O(n log n)\n- 空间复杂度：O(n)\n## 4. 边界处理\n过滤非数字字符；若结果为空输出 0；注意拼接后前导 0（本题保证至少含一个数字）。\n## 5. 关键步骤\n1. 用 isdigit 过滤出所有数字字符。\n2. 自定义比较 x+y>y+x 则 x 在前。\n3. sorted 降序后拼接输出。",
+    "gold": {"process_valid": true, "first_error_step": null, "error_type": "无错误", "coincidence_pass": false},
+    "note": "标准正确解法：拼接比较贪心。"
+  },
+  {
+    "id": "number-bad-concept-01",
+    "problem_id": "number",
+    "difficulty": "Easy",
+    "category": "bad",
+    "judge0_verdict": "WA",
+    "process_text": "## 1. 题意理解\n把字符串里的数字挑出来组成最大数。\n## 2. 算法思路\n把每个数字字符当成一位数，按数值从大到小排序后依次拼接即可。\n## 3. 复杂度分析\n- 时间复杂度：O(n log n)\n- 空间复杂度：O(n)\n## 4. 边界处理\n无。\n## 5. 关键步骤\n1. 提取数字字符。\n2. 按 int(c) 降序排序。\n3. 拼接输出。",
+    "gold": {"process_valid": false, "first_error_step": 2, "error_type": "概念错误", "coincidence_pass": false},
+    "note": "按数值排序在 '9' 与 '90' 时会错（应比较拼接结果），属概念错误。"
+  },
+  {
+    "id": "number-coincidence-01",
+    "problem_id": "number",
+    "difficulty": "Easy",
+    "category": "coincidence",
+    "judge0_verdict": "AC",
+    "process_text": "## 1. 题意理解\n拼最大数。\n## 2. 算法思路\n样例输入是 9987643210…，直接把样例答案原样输出。\n## 3. 复杂度分析\n- 时间复杂度：O(1)\n- 空间复杂度：O(1)\n## 4. 边界处理\n无。\n## 5. 关键步骤\n1. 直接 print(\"9987643210\")。",
+    "gold": {"process_valid": false, "first_error_step": 2, "error_type": "格式不符", "coincidence_pass": true},
+    "note": "写死样例答案却被判 AC（构造的巧合场景），应被识别为巧合通过。"
+  },
+  {
+    "id": "seat-good-01",
+    "problem_id": "seat",
+    "difficulty": "Easy",
+    "category": "good",
+    "judge0_verdict": "AC",
+    "process_text": "## 1. 题意理解\n给定 n 个已被占用的座位号（1..m），按规则安排新同学入座，使两人间隔尽量大；输出某查询的结果。\n## 2. 算法思路\n用数组标记占用，按题目规则（如优先中间、或按给定顺序填最大空隙）模拟入座。\n## 3. 复杂度分析\n- 时间复杂度：O(m)\n- 空间复杂度：O(m)\n## 4. 边界处理\n座位号从 1 开始，注意下标 mapping（seat[i] 对应数组下标 i-1）；n=0 或 m 很小的特判。\n## 5. 关键步骤\n1. 建布尔数组标记已占。\n2. 按规则遍历找最优空位。\n3. 更新标记并输出。",
+    "gold": {"process_valid": true, "first_error_step": null, "error_type": "无错误", "coincidence_pass": false},
+    "note": "标准模拟思路，边界下标清晰。"
+  },
+  {
+    "id": "seat-bad-calc-01",
+    "problem_id": "seat",
+    "difficulty": "Easy",
+    "category": "bad",
+    "judge0_verdict": "WA",
+    "process_text": "## 1. 题意理解\n安排同学坐座位。\n## 2. 算法思路\n把座位号直接当数组下标访问，找到第一个空位就坐。\n## 3. 复杂度分析\n- 时间复杂度：O(m)\n- 空间复杂度：O(m)\n## 4. 边界处理\n无。\n## 5. 关键步骤\n1. 读入占用。\n2. 用 seat[x] 访问第 x 个座位。\n3. 输出。",
+    "gold": {"process_valid": false, "first_error_step": 2, "error_type": "计算错误", "coincidence_pass": false},
+    "note": "座位号从 1 开始却用 seat[x] 直接访问（应为 seat[x-1]），off-by-one 计算错误。"
+  },
+  {
+    "id": "xor-good-01",
+    "problem_id": "xor",
+    "difficulty": "Easy-Medium",
+    "category": "good",
+    "judge0_verdict": "AC",
+    "process_text": "## 1. 题意理解\n给定若干数，在某种选择规则下使选中数的异或和最大。\n## 2. 算法思路\n按位贪心：从高位到低位，统计该位 0/1 的数量，选择能让最终异或该位为 1 的分组方式；利用异或性质与按位计数。\n## 3. 复杂度分析\n- 时间复杂度：O(n * 位数)\n- 空间复杂度：O(1)\n## 4. 边界处理\n全 0 情况；位数上限；注意异或而非加法。\n## 5. 关键步骤\n1. 统计每一位 0/1 个数。\n2. 高位优先决定该位能否取 1。\n3. 累加答案。",
+    "gold": {"process_valid": true, "first_error_step": null, "error_type": "无错误", "coincidence_pass": false},
+    "note": "位运算贪心正确思路。"
+  },
+  {
+    "id": "xor-bad-concept-01",
+    "problem_id": "xor",
+    "difficulty": "Easy-Medium",
+    "category": "bad",
+    "judge0_verdict": "WA",
+    "process_text": "## 1. 题意理解\n让选出的数结果最大。\n## 2. 算法思路\n异或就是相加不要进位，所以直接把所有数求和再模一下就是答案。\n## 3. 复杂度分析\n- 时间复杂度：O(n)\n- 空间复杂度：O(1)\n## 4. 边界处理\n无。\n## 5. 关键步骤\n1. 累加所有数。\n2. 输出和。",
+    "gold": {"process_valid": false, "first_error_step": 2, "error_type": "概念错误", "coincidence_pass": false},
+    "note": "把异或误当成无进位加法（实为位不同为1），概念错误。"
+  },
+  {
+    "id": "polygon-good-01",
+    "problem_id": "polygon",
+    "difficulty": "Medium",
+    "category": "good",
+    "judge0_verdict": "AC",
+    "process_text": "## 1. 题意理解\n求凸多边形三角剖分（或某种划分）的方案数，结果对大质数取模。\n## 2. 算法思路\n区间 DP：dp[i][j] 表示顶点 i..j 构成多边形的划分方案数，枚举中间点 k 作为三角形顶点转移；注意初始化与取模。\n## 3. 复杂度分析\n- 时间复杂度：O(n^3)\n- 空间复杂度：O(n^2)\n## 4. 边界处理\nn 很小或退化多边形特判；每次转移后取模防溢出。\n## 5. 关键步骤\n1. 定义 dp[i][j] 及含义。\n2. 枚举 k 做 dp[i][j]+=dp[i][k]*dp[k][j]。\n3. 取模输出。",
+    "gold": {"process_valid": true, "first_error_step": null, "error_type": "无错误", "coincidence_pass": false},
+    "note": "区间 DP 正确。"
+  },
+  {
+    "id": "polygon-bad-skip-01",
+    "problem_id": "polygon",
+    "difficulty": "Medium",
+    "category": "bad",
+    "judge0_verdict": "WA",
+    "process_text": "## 1. 题意理解\n求多边形划分方案数。\n## 2. 算法思路\n用 DP 算一下就行。\n## 3. 复杂度分析\n- 时间复杂度：O(n^3)\n- 空间复杂度：O(n^2)\n## 4. 边界处理\n无。\n## 5. 关键步骤\n1. DP 初始化。\n2. 转移。\n3. 输出。",
+    "gold": {"process_valid": false, "first_error_step": 5, "error_type": "跳步推导", "coincidence_pass": false},
+    "note": "关键步骤只写「DP/转移」无任何递推式，属跳步推导。"
+  },
+  {
+    "id": "club-good-01",
+    "problem_id": "club",
+    "difficulty": "Medium",
+    "category": "good",
+    "judge0_verdict": "AC",
+    "process_text": "## 1. 题意理解\n多组测试数据，每组给定序列，求满足某条件的子段数/最大和等（社团招新相关计数）。\n## 2. 算法思路\n前缀和 + 枚举：预处理前缀和，枚举区间端点用前缀和差快速求区间和，结合条件判定。\n## 3. 复杂度分析\n- 时间复杂度：O(n^2) 或 O(n)（视条件）\n- 空间复杂度：O(n)\n## 4. 边界处理\n多组数据的组数 T 循环；每组用毕重置前缀和数组；空序列与 n=1 特判。\n## 5. 关键步骤\n1. 读 T，循环每组。\n2. 建前缀和。\n3. 枚举区间并计数/取最值。",
+    "gold": {"process_valid": true, "first_error_step": null, "error_type": "无错误", "coincidence_pass": false},
+    "note": "前缀和+枚举，多组数据边界清晰。"
+  },
+  {
+    "id": "club-bad-omit-01",
+    "problem_id": "club",
+    "difficulty": "Medium",
+    "category": "bad",
+    "judge0_verdict": "WA",
+    "process_text": "## 1. 题意理解\n求满足条件的子段。\n## 2. 算法思路\n前缀和枚举区间。\n## 3. 复杂度分析\n- 时间复杂度：O(n^2)\n- 空间复杂度：O(n)\n## 4. 边界处理\n无。\n## 5. 关键步骤\n1. 建前缀和。\n2. 枚举区间输出答案。",
+    "gold": {"process_valid": false, "first_error_step": 4, "error_type": "条件遗漏", "coincidence_pass": false},
+    "note": "遗漏多组数据 T 的循环与每组重置，条件遗漏（4 边界处理为空）。"
+  },
+  {
+    "id": "road-good-01",
+    "problem_id": "road",
+    "difficulty": "Medium",
+    "category": "good",
+    "judge0_verdict": "AC",
+    "process_text": "## 1. 题意理解\n给定图（边带权），要求用最小的边权总和连通所有必须连通的点/修复道路，即最小生成树（或斯坦纳树近似）。\n## 2. 算法思路\nKruskal：按边权排序，并查集贪心加边，避免环，直到连通。\n## 3. 复杂度分析\n- 时间复杂度：O(E log E)\n- 空间复杂度：O(V+E)\n## 4. 边界处理\n自环与重边；已连通则答案为 0；大输入用并查集路径压缩。\n## 5. 关键步骤\n1. 边按权排序。\n2. 并查集加边去环。\n3. 统计总权值。",
+    "gold": {"process_valid": true, "first_error_step": null, "error_type": "无错误", "coincidence_pass": false},
+    "note": "MST(Kruskal) 正确。"
+  },
+  {
+    "id": "road-bad-misread-01",
+    "problem_id": "road",
+    "difficulty": "Medium",
+    "category": "bad",
+    "judge0_verdict": "WA",
+    "process_text": "## 1. 题意理解\n道路修复就是求从起点到所有点的最短路径总长度。\n## 2. 算法思路\nDijkstra 求单源最短路，把所有最短路长度加起来。\n## 3. 复杂度分析\n- 时间复杂度：O((V+E) log V)\n- 空间复杂度：O(V+E)\n## 4. 边界处理\n无。\n## 5. 关键步骤\n1. 建图。\n2. Dijkstra。\n3. 求和输出。",
+    "gold": {"process_valid": false, "first_error_step": 1, "error_type": "题意误读", "coincidence_pass": false},
+    "note": "把「最小生成树」误读为「单源最短路求和」，题意误读。"
+  },
+  {
+    "id": "replace-good-01",
+    "problem_id": "replace",
+    "difficulty": "Medium-Hard",
+    "category": "good",
+    "judge0_verdict": "AC",
+    "process_text": "## 1. 题意理解\n字符串谐音替换：将某些字符按规则替换后，统计满足某模式的出现次数/方案数。\n## 2. 算法思路\n对每个位置按替换规则生成候选，用双指针/后缀结构或 DP 匹配模式，注意替换的歧义与重叠。\n## 3. 复杂度分析\n- 时间复杂度：O(n * 替换分支)\n- 空间复杂度：O(n)\n## 4. 边界处理\n空串、替换后长度变化、模式重叠计数去重。\n## 5. 关键步骤\n1. 解析替换规则。\n2. 逐位生成候选并匹配。\n3. 统计并去重输出。",
+    "gold": {"process_valid": true, "first_error_step": null, "error_type": "无错误", "coincidence_pass": false},
+    "note": "替换+匹配思路合理。"
+  },
+  {
+    "id": "replace-bad-hallu-01",
+    "problem_id": "replace",
+    "difficulty": "Medium-Hard",
+    "category": "bad",
+    "judge0_verdict": "WA",
+    "process_text": "## 1. 题意理解\n字符串替换匹配。\n## 2. 算法思路\n调用内置函数 magic_match(s, pattern) 直接返回所有匹配位置，系统自带这个函数。\n## 3. 复杂度分析\n- 时间复杂度：O(n)\n- 空间复杂度：O(1)\n## 4. 边界处理\n无。\n## 5. 关键步骤\n1. 调用 magic_match。\n2. 输出结果。",
+    "gold": {"process_valid": false, "first_error_step": 2, "error_type": "幻觉", "coincidence_pass": false},
+    "note": "编造不存在的 magic_match 函数，属幻觉。"
+  },
+  {
+    "id": "employ-good-01",
+    "problem_id": "employ",
+    "difficulty": "Medium",
+    "category": "good",
+    "judge0_verdict": "AC",
+    "process_text": "## 1. 题意理解\n在预算/条件约束下招聘员工使某种收益最大，结果对大质数取模。\n## 2. 算法思路\nDP：dp[i][j] 表示前 i 人花 j 预算的最大收益，转移取 max；每次转移后对模数取模。\n## 3. 复杂度分析\n- 时间复杂度：O(n * B)\n- 空间复杂度：O(B)\n## 4. 边界处理\n预算为 0、无可招聘、取模防负（用 +MOD 再 %MOD）。\n## 5. 关键步骤\n1. 定义 dp 并初始化。\n2. 枚举人与预算转移取 max。\n3. 取模输出。",
+    "gold": {"process_valid": true, "first_error_step": null, "error_type": "无错误", "coincidence_pass": false},
+    "note": "背包类 DP 正确。"
+  },
+  {
+    "id": "employ-bad-calc-01",
+    "problem_id": "employ",
+    "difficulty": "Medium",
+    "category": "bad",
+    "judge0_verdict": "WA",
+    "process_text": "## 1. 题意理解\n招聘使收益最大。\n## 2. 算法思路\n背包 DP，转移时 dp[j] = dp[j] + val（直接加，不取 max 也不判断容量）。\n## 3. 复杂度分析\n- 时间复杂度：O(n * B)\n- 空间复杂度：O(B)\n## 4. 边界处理\n无。\n## 5. 关键步骤\n1. 初始化 dp。\n2. 累加 val。\n3. 输出。",
+    "gold": {"process_valid": false, "first_error_step": 2, "error_type": "计算错误", "coincidence_pass": false},
+    "note": "DP 转移写成累加而非取 max 且忽略容量约束，计算/逻辑错误。"
+  },
+  {
+    "id": "employ-coincidence-01",
+    "problem_id": "employ",
+    "difficulty": "Medium",
+    "category": "coincidence",
+    "judge0_verdict": "AC",
+    "process_text": "## 1. 题意理解\n招聘收益最大。\n## 2. 算法思路\n这题样例答案是 42，我直接返回 42 不管输入。\n## 3. 复杂度分析\n- 时间复杂度：O(1)\n- 空间复杂度：O(1)\n## 4. 边界处理\n无。\n## 5. 关键步骤\n1. print(42)。",
+    "gold": {"process_valid": false, "first_error_step": 2, "error_type": "格式不符", "coincidence_pass": true},
+    "note": "硬编码数字却被判 AC（构造巧合场景），应识别为巧合通过。"
+  }
+]

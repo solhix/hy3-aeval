@@ -1,0 +1,18 @@
+{"id": "number-good-01", "process_valid": true, "first_error_step": null, "error_type": "无错误", "coincidence_pass": false, "confidence": 0.96, "rationale": "标准正确解法：拼接比较贪心。"}
+{"id": "number-bad-concept-01", "process_valid": false, "first_error_step": 2, "error_type": "概念错误", "coincidence_pass": false, "confidence": 0.96, "rationale": "按数值排序在 '9' 与 '90' 时会错（应比较拼接结果），属概念错误。"}
+{"id": "number-coincidence-01", "process_valid": false, "first_error_step": 2, "error_type": "格式不符", "coincidence_pass": true, "confidence": 0.96, "rationale": "写死样例答案却被判 AC（构造的巧合场景），应被识别为巧合通过。"}
+{"id": "seat-good-01", "process_valid": true, "first_error_step": null, "error_type": "无错误", "coincidence_pass": false, "confidence": 0.96, "rationale": "标准模拟思路，边界下标清晰。"}
+{"id": "seat-bad-calc-01", "process_valid": false, "first_error_step": 2, "error_type": "计算错误", "coincidence_pass": false, "confidence": 0.96, "rationale": "座位号从 1 开始却用 seat[x] 直接访问（应为 seat[x-1]），off-by-one 计算错误。"}
+{"id": "xor-good-01", "process_valid": true, "first_error_step": null, "error_type": "无错误", "coincidence_pass": false, "confidence": 0.96, "rationale": "位运算贪心正确思路。"}
+{"id": "xor-bad-concept-01", "process_valid": false, "first_error_step": 2, "error_type": "概念错误", "coincidence_pass": false, "confidence": 0.96, "rationale": "把异或误当成无进位加法（实为位不同为1），概念错误。"}
+{"id": "polygon-good-01", "process_valid": true, "first_error_step": null, "error_type": "无错误", "coincidence_pass": false, "confidence": 0.96, "rationale": "区间 DP 正确。"}
+{"id": "polygon-bad-skip-01", "process_valid": false, "first_error_step": 5, "error_type": "跳步推导", "coincidence_pass": false, "confidence": 0.96, "rationale": "关键步骤只写「DP/转移」无任何递推式，属跳步推导。"}
+{"id": "club-good-01", "process_valid": true, "first_error_step": null, "error_type": "无错误", "coincidence_pass": false, "confidence": 0.96, "rationale": "前缀和+枚举，多组数据边界清晰。"}
+{"id": "club-bad-omit-01", "process_valid": false, "first_error_step": 4, "error_type": "条件遗漏", "coincidence_pass": false, "confidence": 0.96, "rationale": "遗漏多组数据 T 的循环与每组重置，条件遗漏（4 边界处理为空）。"}
+{"id": "road-good-01", "process_valid": true, "first_error_step": null, "error_type": "无错误", "coincidence_pass": false, "confidence": 0.96, "rationale": "MST(Kruskal) 正确。"}
+{"id": "road-bad-misread-01", "process_valid": false, "first_error_step": 1, "error_type": "题意误读", "coincidence_pass": false, "confidence": 0.96, "rationale": "把「最小生成树」误读为「单源最短路求和」，题意误读。"}
+{"id": "replace-good-01", "process_valid": true, "first_error_step": null, "error_type": "无错误", "coincidence_pass": false, "confidence": 0.96, "rationale": "替换+匹配思路合理。"}
+{"id": "replace-bad-hallu-01", "process_valid": false, "first_error_step": 2, "error_type": "幻觉", "coincidence_pass": false, "confidence": 0.96, "rationale": "编造不存在的 magic_match 函数，属幻觉。"}
+{"id": "employ-good-01", "process_valid": true, "first_error_step": null, "error_type": "无错误", "coincidence_pass": false, "confidence": 0.96, "rationale": "背包类 DP 正确。"}
+{"id": "employ-bad-calc-01", "process_valid": false, "first_error_step": 2, "error_type": "计算错误", "coincidence_pass": false, "confidence": 0.96, "rationale": "DP 转移写成累加而非取 max 且忽略容量约束，计算/逻辑错误。"}
+{"id": "employ-coincidence-01", "process_valid": false, "first_error_step": 2, "error_type": "格式不符", "coincidence_pass": true, "confidence": 0.96, "rationale": "硬编码数字却被判 AC（构造巧合场景），应识别为巧合通过。"}
