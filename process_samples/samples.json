@@ -70,24 +70,24 @@
     "note": "把异或误当成无进位加法（实为位不同为1），概念错误。"
   },
   {
-    "id": "polygon-good-01",
-    "problem_id": "polygon",
+    "id": "circular-good-01",
+    "problem_id": "circular",
     "difficulty": "Medium",
     "category": "good",
     "judge0_verdict": "AC",
-    "process_text": "## 1. 题意理解\n求凸多边形三角剖分（或某种划分）的方案数，结果对大质数取模。\n## 2. 算法思路\n区间 DP：dp[i][j] 表示顶点 i..j 构成多边形的划分方案数，枚举中间点 k 作为三角形顶点转移；注意初始化与取模。\n## 3. 复杂度分析\n- 时间复杂度：O(n^3)\n- 空间复杂度：O(n^2)\n## 4. 边界处理\nn 很小或退化多边形特判；每次转移后取模防溢出。\n## 5. 关键步骤\n1. 定义 dp[i][j] 及含义。\n2. 枚举 k 做 dp[i][j]+=dp[i][k]*dp[k][j]。\n3. 取模输出。",
+    "process_text": "## 1. 题意理解\n环形数组求最大子段和，子段可跨首尾。\n## 2. 算法思路\n分两种情况：不跨首尾用普通 Kadane 求最大子段和；跨首尾则总和减去最小子段和（去掉一段最负的中间段，剩下的跨首尾部分最大）。取两者 max。\n## 3. 复杂度分析\n- 时间复杂度：O(n)，一趟扫描同时维护最大/最小子段和与总和\n- 空间复杂度：O(1)\n## 4. 边界处理\n- 全负数组时跨首尾会得到空段，此时答案就是最大单元素，需特判。\n- 数组长度 n≥3。\n## 5. 关键步骤\n1. 一趟扫描维护 curMax/maxSum 和 curMin/minSum 以及 total。\n2. 不跨首尾取 maxSum。\n3. 跨首尾取 total - minSum。\n4. 全负特判后输出 max(maxSum, total-minSum)。",
     "gold": {"process_valid": true, "first_error_step": null, "error_type": "无错误", "coincidence_pass": false},
-    "note": "区间 DP 正确。"
+    "note": "正确解法，同时考虑了跨首尾和全负特判。"
   },
   {
-    "id": "polygon-bad-skip-01",
-    "problem_id": "polygon",
+    "id": "circular-coincidence-01",
+    "problem_id": "circular",
     "difficulty": "Medium",
-    "category": "bad",
-    "judge0_verdict": "WA",
-    "process_text": "## 1. 题意理解\n求多边形划分方案数。\n## 2. 算法思路\n用 DP 算一下就行。\n## 3. 复杂度分析\n- 时间复杂度：O(n^3)\n- 空间复杂度：O(n^2)\n## 4. 边界处理\n无。\n## 5. 关键步骤\n1. DP 初始化。\n2. 转移。\n3. 输出。",
-    "gold": {"process_valid": false, "first_error_step": 5, "error_type": "跳步推导", "coincidence_pass": false},
-    "note": "关键步骤只写「DP/转移」无任何递推式，属跳步推导。"
+    "category": "coincidence",
+    "judge0_verdict": "AC",
+    "process_text": "## 1. 题意理解\n给定数组求最大子段和。\n## 2. 算法思路\n用 Kadane 算法：dp[i] = max(a[i], dp[i-1]+a[i])，维护全局最大值即可。\n## 3. 复杂度分析\n- 时间复杂度：O(n)\n- 空间复杂度：O(1)\n## 4. 边界处理\n- 全负数组时答案为最大单元素。\n## 5. 关键步骤\n1. 初始化 curMax = maxSum = a[0]。\n2. 遍历 i=1..n-1，curMax = max(a[i], curMax+a[i])，更新 maxSum。\n3. 输出 maxSum。",
+    "gold": {"process_valid": false, "first_error_step": 2, "error_type": "条件遗漏", "coincidence_pass": true},
+    "note": "题目明确是环形数组需考虑跨首尾，但过程只做了普通 Kadane，完全遗漏了环形特性。测试数据为全正数组，普通 Kadane 碰巧 AC——典型的巧合通过（过程有缺陷但答案正确）。"
   },
   {
     "id": "club-good-01",

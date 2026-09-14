@@ -23,9 +23,10 @@ PROD = {
     "xor": dict(process_valid=True, first_error_step=None, error_type="无错误",
                 coincidence_pass=False, confidence=0.97,
                 rationale="前缀异或+DP 转化严密，复杂度与 k=0 边界分析到位，AC。"),
-    "polygon": dict(process_valid=True, first_error_step=None, error_type="无错误",
-                    coincidence_pass=False, confidence=0.97,
-                    rationale="按最大值分类+01背包方案计数推导完整，取模防负处理到位，AC。"),
+    "circular": dict(process_valid=False, first_error_step=2, error_type="条件遗漏",
+                     coincidence_pass=True, confidence=0.95,
+                     rationale="题目为环形数组需考虑跨首尾（总和-最小子段和），但过程只写了普通Kadane，完全遗漏了环形特性。"
+                               "测试数据为全正数组，普通Kadane碰巧AC——典型巧合通过（过程有缺陷但答案正确）。"),
     "club": dict(process_valid=True, first_error_step=None, error_type="无错误",
                  coincidence_pass=False, confidence=0.96,
                  rationale="三候选贪心覆盖(n/2)分配含(2,2,2)情形，修正后 AC，过程自洽。"),
