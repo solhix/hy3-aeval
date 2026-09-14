@@ -1,0 +1,173 @@
+{
+  "number": {
+    "name": "P14357 [CSP-J 2025] 拼数",
+    "problem_id": "number",
+    "difficulty": "Easy",
+    "knowledge_points": [
+      "基础语法",
+      "字符串处理",
+      "贪心"
+    ],
+    "statement_file": "number.md",
+    "samples_zip": "number.zip",
+    "test_point_count": 25,
+    "score_per_point": 4,
+    "time_limit_cpu": 2,
+    "time_limit_wall": 6,
+    "memory_limit_kb": 512000,
+    "official_time_limit_cpu": 1,
+    "official_memory_limit_kb": 524288,
+    "languages": ["python3", "cpp"],
+    "io_mode": "stdin/stdout",
+    "note": "CSP-J A 题。从字符串中选数字拼出最大正整数（注意同数字可重复选、每字符只用一次，且 s 可含非数字）。官方 1.0s/512MiB；本地评测放宽至 cpu 2s/wall 6s。"
+  },
+  "seat": {
+    "name": "P14358 [CSP-J 2025] 座位",
+    "problem_id": "seat",
+    "difficulty": "Easy",
+    "knowledge_points": [
+      "模拟",
+      "数组"
+    ],
+    "statement_file": "seat.md",
+    "samples_zip": "seat.zip",
+    "test_point_count": 20,
+    "score_per_point": 5,
+    "time_limit_cpu": 2,
+    "time_limit_wall": 6,
+    "memory_limit_kb": 512000,
+    "official_time_limit_cpu": 1,
+    "official_memory_limit_kb": 524288,
+    "languages": ["python3", "cpp"],
+    "io_mode": "stdin/stdout",
+    "note": "CSP-J B 题。官方 1.0s/512MiB；本地评测放宽至 cpu 2s/wall 6s。"
+  },
+  "xor": {
+    "name": "P14359 [CSP-J 2025] 异或和",
+    "problem_id": "xor",
+    "difficulty": "Easy-Medium",
+    "knowledge_points": [
+      "位运算",
+      "贪心"
+    ],
+    "statement_file": "xor.md",
+    "samples_zip": "xor.zip",
+    "test_point_count": 20,
+    "score_per_point": 5,
+    "time_limit_cpu": 2,
+    "time_limit_wall": 6,
+    "memory_limit_kb": 512000,
+    "official_time_limit_cpu": 1,
+    "official_memory_limit_kb": 524288,
+    "languages": ["python3", "cpp"],
+    "io_mode": "stdin/stdout",
+    "note": "CSP-J C 题。官方 1.0s/512MiB；本地评测放宽至 cpu 2s/wall 6s。"
+  },
+  "polygon": {
+    "name": "P14360 [CSP-J 2025] 多边形",
+    "problem_id": "polygon",
+    "difficulty": "Medium",
+    "knowledge_points": [
+      "DP",
+      "组合计数"
+    ],
+    "statement_file": "polygon.md",
+    "samples_zip": "polygon.zip",
+    "test_point_count": 25,
+    "score_per_point": 4,
+    "time_limit_cpu": 2,
+    "time_limit_wall": 6,
+    "memory_limit_kb": 512000,
+    "official_time_limit_cpu": 1,
+    "official_memory_limit_kb": 524288,
+    "languages": ["python3", "cpp"],
+    "io_mode": "stdin/stdout",
+    "note": "CSP-J D 题（入门级压轴，非 S 卷；洛谷难度约 T3 级）。官方 1.0s/512MiB；本地评测放宽至 cpu 2s/wall 6s。可作实验矩阵裁剪项（P0 降级）。"
+  },
+  "club": {
+    "name": "P14361 [CSP-S 2025] 社团招新",
+    "problem_id": "club",
+    "difficulty": "Medium",
+    "knowledge_points": [
+      "枚举",
+      "前缀和"
+    ],
+    "statement_file": "club.md",
+    "samples_zip": "club.zip",
+    "test_point_count": 20,
+    "score_per_point": 5,
+    "time_limit_cpu": 2,
+    "time_limit_wall": 6,
+    "memory_limit_kb": 512000,
+    "official_time_limit_cpu": 1,
+    "official_memory_limit_kb": 524288,
+    "languages": ["python3", "cpp"],
+    "io_mode": "stdin/stdout",
+    "note": "CSP-S A 题（多组数据）。大样例 3.7MB。官方 1.0s/512MiB；本地评测放宽至 cpu 2s/wall 6s。"
+  },
+  "road": {
+    "name": "P14362 [CSP-S 2025] 道路修复",
+    "problem_id": "road",
+    "difficulty": "Medium",
+    "knowledge_points": [
+      "图论",
+      "最短路",
+      "最小生成树"
+    ],
+    "statement_file": "road.md",
+    "samples_zip": "road.zip",
+    "test_point_count": 25,
+    "score_per_point": 4,
+    "time_limit_cpu": 2,
+    "time_limit_wall": 6,
+    "memory_limit_kb": 512000,
+    "official_time_limit_cpu": 1,
+    "official_memory_limit_kb": 524288,
+    "languages": ["python3", "cpp"],
+    "io_mode": "stdin/stdout",
+    "note": "CSP-S B 题。19MB 大输入样例；本地实测最大点 0.71s / 203MB。官方 1.0s/512MiB；本地评测放宽至 cpu 2s/wall 6s。"
+  },
+  "replace": {
+    "name": "P14363 [CSP-S 2025] 谐音替换",
+    "problem_id": "replace",
+    "difficulty": "Medium-Hard",
+    "knowledge_points": [
+      "字符串",
+      "后缀数组",
+      "模拟"
+    ],
+    "statement_file": "replace.md",
+    "samples_zip": "replace.zip",
+    "test_point_count": 20,
+    "score_per_point": 5,
+    "time_limit_cpu": 2,
+    "time_limit_wall": 6,
+    "memory_limit_kb": 512000,
+    "official_time_limit_cpu": 1,
+    "official_memory_limit_kb": 2097152,
+    "languages": ["python3", "cpp"],
+    "io_mode": "stdin/stdout",
+    "note": "CSP-S C 题。官方内存 2048MiB，但 Judge0 沙箱 memory_limit 硬上限为 512000KB(500MB)，故评测用内存 cap 500MB；标程实测仅 210MB、最大点约 0.38s，在 500MB 内全 AC 无实际损失。官方 1.0s/512MiB；本地评测放宽至 cpu 2s/wall 6s。"
+  },
+  "employ": {
+    "name": "P14364 [CSP-S 2025] 员工招聘",
+    "problem_id": "employ",
+    "difficulty": "Medium",
+    "knowledge_points": [
+      "DP",
+      "取模"
+    ],
+    "statement_file": "employ.md",
+    "samples_zip": "employ.zip",
+    "test_point_count": 25,
+    "score_per_point": 4,
+    "time_limit_cpu": 2,
+    "time_limit_wall": 6,
+    "memory_limit_kb": 512000,
+    "official_time_limit_cpu": 1,
+    "official_memory_limit_kb": 524288,
+    "languages": ["python3", "cpp"],
+    "io_mode": "stdin/stdout",
+    "note": "CSP-S D 题（T4 难度）。本地实测最大点 1.18s（已超官方 1s，故放宽）。官方 1.0s/512MiB；本地评测放宽至 cpu 2s/wall 6s。可作实验矩阵裁剪项（P0 降级）。"
+  }
+}

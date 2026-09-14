@@ -1,0 +1,13 @@
+# hy3-aeval 依赖（仅过程评估模块所需）
+#
+# 安装:
+#   python -m venv .venv
+#   .venv\Scripts\python -m pip install -r requirements.txt     # Windows
+#   .venv/bin/python   -m pip install -r requirements.txt       # Linux / WSL
+#
+# 需要 Python >= 3.10（验证环境为 CPython 3.13）。
+# 注意：本仓库只含过程评估代码，不含 Judge0 评测栈；
+#       Judge0 需另行部署（见 README「环境部署」），run_direct.py 通过 http 直连本地 Judge0。
+
+httpx==0.28.1        # run_direct.py 直连 Judge0 API
+openai==1.51.0       # process_eval.py 的 HY3 裁判（OpenAI 兼容端点，env 可配）
